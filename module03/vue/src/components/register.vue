@@ -35,6 +35,8 @@
 <script setup>
 import { ref } from 'vue'
 
+import auth from '@/auth/auth'
+
 const emit = defineEmits(['close']);
 
 const fullName = ref('')
@@ -42,7 +44,11 @@ const userName = ref('')
 const password = ref('')
 
 const onSubmit = () => {
-
+  auth
+    .register(fullName.value, userName.value, password.value)
+    .then(() => {
+      emit('close')
+    });
 }
 
 const onCancel = () => {

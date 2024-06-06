@@ -1,4 +1,3 @@
-
 <template>
   <v-container>
     <v-card>
@@ -32,13 +31,22 @@
 <script setup>
 import { ref } from 'vue'
 
+import auth from '@/auth/auth'
+
 const emit = defineEmits(['close']);
 
 const userName = ref('')
 const password = ref('')
 
 const onSubmit = () => {
-
+  auth
+    .login(userName.value, password.value)
+    .then(() => {
+      emit('close')
+    })
+    .catch((error) => {
+      console.error(error);
+    })
 }
 
 const onCancel = () => {

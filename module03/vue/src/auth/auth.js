@@ -8,13 +8,16 @@ const getToken = () => {
 }
 
 const login = (userName, password) => {
+
+    //console.log(userName + ":" + password);
+
     return new Promise((resolve, reject) => {
-        const sessionStore = useSessionStore;
+        const sessionStore = useSessionStore();
 
         authAPI.authenticate(userName, password)
             .then(result => {
                 localStorage.setItem(TOKEN_KEY, result.token);
-                sessionStore.setFullName(result.fulName);
+                //sessionStore.setFullName(result.fullName);
                 sessionStore.setLoggedIn(true);
                 resolve();
             })

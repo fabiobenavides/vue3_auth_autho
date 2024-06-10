@@ -5,11 +5,12 @@ const authenticate = (userName, password ) => {
 
     const config = {
         headers: {
-            Authorization: 'Basic' + creds
+            Authorization: 'Basic ' + creds
         }
     }
 
     return new Promise((resolve, reject) => {
+        //console.log(`btoa ${config.headers.Authorization}`);
         axios.post('authenticate', null, config)
         .then(response => { 
             resolve(response.data);

@@ -39,6 +39,9 @@ const userName = ref('')
 const password = ref('')
 
 const onSubmit = () => {
+
+  //console.log(userName.value + ' y ' + password.value);
+
   auth
     .login(userName.value, password.value)
     .then(() => {
